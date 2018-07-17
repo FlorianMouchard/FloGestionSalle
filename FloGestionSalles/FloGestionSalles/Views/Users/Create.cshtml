@@ -1,17 +1,26 @@
 ﻿@model FloGestionSalles.Models.User
 @{
+    Layout = "~/Views/Shared/_LayoutForm.cshtml";
     ViewBag.Title = "Create";
 }
+@section SectionTitle{
+    <h2>Ajouter un utilisateur</h2>
+}
 
-<h2>Ajouter un utilisateur</h2>
 
 @using (Html.BeginForm("Create", "Users", System.Web.Mvc.FormMethod.Post))
 {
     <div class="row">
         <div class="col-md-4">
             <div class="form-group">
+                @Html.LabelFor(x => x.CivilityID)
+                @Html.DropDownListFor(x => x.CivilityID, new SelectList(ViewBag.Civilities, "ID", "Label"), new { @class = "form-control" })
+                
+            </div>
+
+            <div class="form-group">
                 @*<label for="inputName">Nom</label>
-            <input type="text" name="Lastname" id="inputName" class="form-control" />*@
+                    <input type="text" name="Lastname" id="inputName" class="form-control" />*@
                 @Html.LabelFor(x => x.Lastname)
                 @Html.EditorFor(x => x.Lastname, null, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(x => x.Lastname, "", new { @class = "text-danger" })
@@ -44,5 +53,10 @@
             <button type="submit" class="btn btn-primary">Enregistrer</button>
         </div>
     </div>
-   
+
+    @section SectionScripts{
+
+    }
+
+
 }

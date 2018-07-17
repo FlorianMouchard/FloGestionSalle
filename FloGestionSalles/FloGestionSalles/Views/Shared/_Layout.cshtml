@@ -19,21 +19,21 @@
                 <h2 class="col-12">Roumix</h2>
             </div>
             <ul class="nav navbar-nav">
-                <li><a href="@Url.Action("Index", "Home")" class="col-2 btn-dark">Accueil</a></li>
-                <li><a href="@Url.Action("Create", "Users")" class="col-2 btn-dark">Ajouter un utilisateur</a></li>
-                <li><a href="@Url.Action("About", "Home")" class="col-2 btn-dark">A propos</a></li>
+                <li><a href="@Url.Action("Index", "Home")" class="col-2 btn-dark" style="color:aquamarine">Accueil</a></li>
+                <li><a href="@Url.Action("Create", "Users")" class="col-2 btn-dark" style="color:aquamarine">Ajouter un utilisateur</a></li>
+                <li><a href="@Url.Action("About", "Home")" class="col-2 btn-dark" style="color:aquamarine">A propos</a></li>
             </ul>
         </nav>
         @RenderBody()
-        <footer class="bg-dark">
-            <p style="color:aquamarine">&copy; POEC Rouen 2018</p>
-
+        <footer class="bg-dark">            
+                <p style="color:aquamarine">&copy; POEC Rouen 2018</p>            
         </footer>
     </div>
     <div>
     </div>
-    <script src="~/Scripts/jquery-3.0.0.min.js"></script>    
+    <script src="~/Scripts/jquery-3.0.0.min.js"></script>
     <script src="~/Scripts/popper.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
+    @RenderSection("SectionScripts", false)
 </body>
 </html>
