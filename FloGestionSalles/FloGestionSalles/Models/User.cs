@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FloGestionSalles.Utils.Validators;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -31,23 +32,27 @@ namespace FloGestionSalles.Models
                            @"\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\" +
                            @".)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$",
             ErrorMessage = "L'adresse mail n'est pas au bon format")]
+        [ExistingMail(ErrorMessage = "L'adresse email est déjà utilisée")]
         [DataType(DataType.EmailAddress)]
         public string Mail { get; set; }
 
         [Display(Name = "Date de naissance")]
+        [Required(ErrorMessage = "Le champ {0} est obligatoire")]
         [DataType(DataType.Date)]
+        [Major(18, ErrorMessage = "Vous devez être majeur")]
         public DateTime BirthDate { get; set; }
 
         [Display(Name = "Mot de passe")]
         [Required(ErrorMessage = "Le champ {0} est obligatoire")]
         [RegularExpression("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\\W).{6,}$", ErrorMessage = "Le mot de passe doit contenir au moins 6 caractères dont au moins une majuscule, une minuscule, un chiffre et un caractère spécial")]
-        [DataType(DataType.Password)]
+        [DataType(DataType.Password)]        
         public string Password { get; set; }
 
         [Display(Name = "Confirmer le mot de passe")]
         [Required(ErrorMessage = "Le champ {0} est obligatoire")]
         [Compare("Password", ErrorMessage = "Les mots de passe ne sont pas identiques.")]
         [DataType(DataType.Password)]
+        [NotMapped]
         public string ConfirmedPassword { get; set; }
     }
 }

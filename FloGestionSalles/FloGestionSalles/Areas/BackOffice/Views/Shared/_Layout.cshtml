@@ -14,20 +14,19 @@
 </head>
 <body>
     <div class="container">
+        <h1>Back Office</h1>
         <nav class="navbar navbar-expand-lg" style="background-color:aquamarine">
             <div class="navbar-header">
                 <h2 class="col-12">Roumix</h2>
             </div>
             <ul class="nav navbar-nav">
-                <li><a href="@Url.Action("Index", "Home")" class="col-2 btn-dark" style="color:aquamarine">Accueil</a></li>
-                <li><a href="@Url.Action("Create", "Users")" class="col-2 btn-dark" style="color:aquamarine">Ajouter un utilisateur</a></li>
-                <li><a href="@Url.Action("Index", "Dashboard", new { area = "BackOffice"})" class="col-2 btn-dark" style="color:aquamarine">Back Office</a></li>
-                <li><a href="@Url.Action("About", "Home")" class="col-2 btn-dark" style="color:aquamarine">A propos</a></li>
+                <li><a href="@Url.Action("Index", "Home", new { area=""})" class="col-2 btn-dark" style="color:aquamarine">Accueil</a></li>
+                <li><a href="@Url.Action("Index", "Dashboard")" class="col-2 btn-dark" style="color:aquamarine">Back Office</a></li>
             </ul>
         </nav>
         @RenderBody()
-        <footer class="bg-dark">            
-                <p style="color:aquamarine">&copy; POEC Rouen 2018</p>            
+        <footer class="bg-dark">
+            <p style="color:aquamarine">&copy; BACK OFFICE POEC Rouen 2018</p>
         </footer>
     </div>
     <div>

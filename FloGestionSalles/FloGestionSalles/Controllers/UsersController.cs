@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using FloGestionSalles.Utils;
 
 
 namespace FloGestionSalles.Controllers
@@ -26,6 +27,8 @@ namespace FloGestionSalles.Controllers
             
             if (ModelState.IsValid)
             {
+                db.Configuration.ValidateOnSaveEnabled = false;
+                user.Password = user.Password.HashMD5();
                 db.Users.Add(user);
                 db.SaveChanges();
             }
