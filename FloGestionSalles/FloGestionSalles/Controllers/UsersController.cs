@@ -22,6 +22,7 @@ namespace FloGestionSalles.Controllers
             return View();
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(User user)
         {
             

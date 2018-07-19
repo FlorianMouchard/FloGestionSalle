@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace FloGestionSalles.Models
 {
@@ -13,6 +14,12 @@ namespace FloGestionSalles.Models
         [StringLength(50)]
         [Required(ErrorMessage = "Le champ {0} est obligatoire")]
         public string Name { get; set; }
+
+        [Required(ErrorMessage = "Le champ {0} est obligatoire")]
+        [Display(Name = "Catégorie")]
+        public int CategoryID { get; set; }
+        [ForeignKey("CategoryID")]
+        public Category Category { get; set; }
 
         [Display(Name = "Nombre de place")]
         [Range(0, 50)]
@@ -24,7 +31,9 @@ namespace FloGestionSalles.Models
         [Required(ErrorMessage = "Le champ {0} est obligatoire")]
         public decimal Price { get; set; }
 
-        [Display(Name = "Description")]        
+        [AllowHtml]
+        [Display(Name = "Description")]
+        [DataType(DataType.MultilineText)]
         public string Description { get; set; }
 
         [Display(Name = "Date de Création")]
