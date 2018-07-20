@@ -4,10 +4,12 @@
 .field-validation-error{
     font-size: small;
 }
-
+body{
+    position:relative;
+}
 footer {    
     position: absolute;
-    bottom: 0;
+    bottom: 0;   
     width: 58%;
     height: 30px;
 }
