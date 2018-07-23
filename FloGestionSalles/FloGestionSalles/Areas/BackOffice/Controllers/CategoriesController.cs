@@ -7,10 +7,12 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using FloGestionSalles.Data;
+using FloGestionSalles.Filters;
 using FloGestionSalles.Models;
 
 namespace FloGestionSalles.Areas.BackOffice.Controllers
 {
+    [AuthenticationFilter]
     public class CategoriesController : Controller
     {
         private RoomyDbContext db = new RoomyDbContext();

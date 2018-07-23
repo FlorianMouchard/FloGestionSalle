@@ -1,6 +1,7 @@
 ﻿
 @{
     Layout = null;
+    var user = Session["USER_BO"] as FloGestionSalles.Models.User;
 }
 
 <!DOCTYPE html>
@@ -28,6 +29,9 @@
                 <li><a href="@Url.Action("Create", "Categories")" class="col-2 btn-dark" style="color:aquamarine">Ajouter une catégorie</a></li>
                 <li><a href="@Url.Action("Index", "Dashboard")" class="col-2 btn-dark" style="color:aquamarine">Back Office</a></li>
             </ul>
+            <span class="navbar-text">
+                Bonjour @user.Firstname @user.Lastname <a href="@Url.Action("Logout", "Authentication")" class="col-4 btn-warning"><i class="fa fa-user">Se déconnecter</i></a>
+            </span>
         </nav>
         @RenderBody()
         <footer class="bg-dark">

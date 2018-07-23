@@ -8,15 +8,17 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using FloGestionSalles.Data;
+using FloGestionSalles.Filters;
 using FloGestionSalles.Models;
 
 namespace FloGestionSalles.Areas.BackOffice.Controllers
 {
+    [AuthenticationFilter]
     public class RoomsController : Controller
     {
         private RoomyDbContext db = new RoomyDbContext();
 
-        // GET: BackOffice/Rooms
+        // GET: BackOffice/Rooms        
         public ActionResult Index()
         {
             var rooms = db.Rooms.Include(r => r.User).Include(r => r.Category);
@@ -152,6 +154,15 @@ namespace FloGestionSalles.Areas.BackOffice.Controllers
             else
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
+        }
+
+        [HttpPost]
+        public ActionResult DelFile (int ID)
+        {
+            RoomFile roomFile = db.RoomFiles.Find(ID);
+            db.RoomFiles.Remove(roomFile);
+            db.SaveChanges();
+            return RedirectToAction("Edit", new { id = roomFile.RoomID });
         }
 
         protected override void Dispose(bool disposing)

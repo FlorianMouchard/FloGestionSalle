@@ -79,7 +79,7 @@
     <div class="col-md-3">
 
         <img class="img-thumbnail" src="data:@file.ContentType;base64, @System.Convert.ToBase64String(file.Content)" />
-        <p>@file.Name <a href="#" class="btn btn-danger"><i class="fa fa-remove"></i></a></p>
+        <p>@file.Name <a href="#" id="btnDel" class="btn btn-danger"><i class="fa fa-remove"></i></a></p>
     </div>
 }
 
@@ -99,3 +99,10 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+<script>
+    $(document).ready(function () {
+        $("#btnDel").click(function () {
+
+        });
+    });
+</script>
