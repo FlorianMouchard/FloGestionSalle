@@ -4,6 +4,8 @@
     var user = Session["USER_BO"] as FloGestionSalles.Models.User;
 }
 
+
+
 <!DOCTYPE html>
 
 <html>
@@ -15,6 +17,14 @@
     <link href="~/Content/roomy.css" rel="stylesheet" />
 </head>
 <body>
+    @if (TempData["Message"] != null)
+    {
+        <div class="alert alert-@TempData["MessageType"].ToString()">
+            @TempData["Message"].ToString();
+        </div>
+    }
+   
+
     <div class="container">
         <h1>Back Office</h1>
         <nav class="navbar navbar-expand-lg" style="background-color:aquamarine">

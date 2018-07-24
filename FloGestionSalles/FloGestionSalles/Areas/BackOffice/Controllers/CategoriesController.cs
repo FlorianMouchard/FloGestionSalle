@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using FloGestionSalles.Controllers;
 using FloGestionSalles.Data;
 using FloGestionSalles.Filters;
 using FloGestionSalles.Models;
@@ -13,9 +14,9 @@ using FloGestionSalles.Models;
 namespace FloGestionSalles.Areas.BackOffice.Controllers
 {
     [AuthenticationFilter]
-    public class CategoriesController : Controller
+    public class CategoriesController : BaseController
     {
-        private RoomyDbContext db = new RoomyDbContext();
+        
 
         // GET: BackOffice/Categories
         public ActionResult Index()
@@ -55,6 +56,7 @@ namespace FloGestionSalles.Areas.BackOffice.Controllers
             {
                 db.Categories.Add(category);
                 db.SaveChanges();
+                DisplayMessage("Catégorie enregistrée", MessageType.SUCCESS);
                 return RedirectToAction("Index");
             }
 
@@ -118,13 +120,6 @@ namespace FloGestionSalles.Areas.BackOffice.Controllers
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+        
     }
 }

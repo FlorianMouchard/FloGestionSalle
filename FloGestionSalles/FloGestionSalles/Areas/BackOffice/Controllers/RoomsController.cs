@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using FloGestionSalles.Controllers;
 using FloGestionSalles.Data;
 using FloGestionSalles.Filters;
 using FloGestionSalles.Models;
@@ -14,9 +15,9 @@ using FloGestionSalles.Models;
 namespace FloGestionSalles.Areas.BackOffice.Controllers
 {
     [AuthenticationFilter]
-    public class RoomsController : Controller
+    public class RoomsController : BaseController
     {
-        private RoomyDbContext db = new RoomyDbContext();
+        
 
         // GET: BackOffice/Rooms        
         public ActionResult Index()
@@ -98,11 +99,12 @@ namespace FloGestionSalles.Areas.BackOffice.Controllers
             if (ModelState.IsValid)
             {
                 db.Entry(room).State = EntityState.Modified;
-                db.SaveChanges();
+                db.SaveChanges();                
                 return RedirectToAction("Index");
+                
             }
             ViewBag.UserID = new SelectList(db.Users, "ID", "Lastname", room.UserID);
-            ViewBag.CategoryID = new SelectList(db.Categories, "ID", "Name", room.CategoryID);
+            ViewBag.CategoryID = new SelectList(db.Categories, "ID", "Name", room.CategoryID);            
             return View(room);
         }
 
@@ -165,13 +167,5 @@ namespace FloGestionSalles.Areas.BackOffice.Controllers
             return RedirectToAction("Edit", new { id = roomFile.RoomID });
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
     }
 }

@@ -34,7 +34,8 @@ namespace FloGestionSalles.Controllers
                 db.SaveChanges();
             }
             ViewBag.Civilities = db.Civilities.ToList();
-            return View();
+            TempData["Message"] = $"Utilisateur {user.Firstname} enregistré.";
+            return RedirectToAction("Index", "Home");
         }
 
         protected override void Dispose(bool disposing)

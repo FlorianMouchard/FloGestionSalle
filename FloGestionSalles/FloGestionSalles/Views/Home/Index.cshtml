@@ -1,2 +1,6 @@
 ﻿<h1>Accueil</h1>
+@if (TempData["message"] != null && !string.IsNullOrWhiteSpace(TempData["message"].ToString()))
+{
+    <div class="alert alert-success">@TempData["message"].ToString()</div>
+}
 
